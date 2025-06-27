@@ -1,0 +1,30 @@
+display_information:
+  name: kagent
+  description: kagent Slack Bot
+  background_color: "#483354"
+features:
+  bot_user:
+    display_name: kagent
+    always_online: true
+oauth_config:
+  scopes:
+    bot:
+      - channels:history
+      - chat:write
+      - app_mentions:read
+      - im:history
+      - im:read
+    user:
+      - connections:write  # Required for Socket Mode
+
+settings:
+  event_subscriptions:
+    bot_events:
+      - app_mention
+      - message.im
+  # ingress firewall (origin IP of your infrastructure)
+  allowed_ip_address_ranges:
+    - A.B.C.D/32
+  org_deploy_enabled: false
+  socket_mode_enabled: true
+  token_rotation_enabled: false

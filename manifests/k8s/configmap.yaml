@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: slack-bot-config
+  namespace: slack-bot
+data:
+  # Security configuration
+  WEBHOOK_TIMEOUT: "30"
+  MAX_REQUEST_SIZE: "1048576"  # 1MB
+  RATE_LIMIT_WINDOW: "60"
+  RATE_LIMIT_MAX_REQUESTS: "100"
+  # Logging configuration
+  LOG_LEVEL: "INFO"
+  LOG_FORMAT: "json"
+  # Kagent A2A configuration
+  KAGENT_A2A_URL: "http://kagent.kagent.svc.cluster.local:8083/api/a2a"
+  KAGENT_A2A_TIMEOUT: "30"
+  # Security headers
+  SECURITY_HEADERS_ENABLED: "true"
+  HSTS_MAX_AGE: "31536000"
