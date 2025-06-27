@@ -183,3 +183,15 @@ and
   export SLACK_CHANNEL_IDS=C1234567890,C0987654321
 {"event": "Configuration validation failed - bot cannot start", "logger": "__main__", "level": "error", "timestamp": "2025-06-27T17:49:51.057294Z"}
 ```
+
+and
+
+```
+ docker run --rm -it -e SLACK_APP_TOKEN=test-token -e SLACK_BOT_TOKEN=test-token -e SLACK_TEAM_ID=T123456789 -e SLACK_CHANNEL_IDS=C123456789 -p 8080:8080 kagent-slack-bot python -c "import sys; print('Python imports working'); from slack_bolt.adapter.socket_mode import SocketModeHandler; print('Slack imports working'); import aiohttp; print('Aiohttp imports working'); import structlog; print('Structlog imports working'); import prometheus_client; print('Prometheus imports working'); print('All imports successful!')"
+Python imports working
+Slack imports working
+Aiohttp imports working
+Structlog imports working
+Prometheus imports working
+All imports successful!
+```
