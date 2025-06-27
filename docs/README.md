@@ -156,3 +156,30 @@ Successfully installed aiohappyeyeballs-2.6.1 aiohttp-3.12.13 aiosignal-1.3.2 at
   export SLACK_CHANNEL_IDS=C1234567890,C0987654321
 {"event": "Configuration validation failed - bot cannot start", "logger": "__main__", "level": "error", "timestamp": "2025-06-27T16:32:02.428421Z"}
 ```
+
+and
+
+```
+❯ docker run --rm -it -e SLACK_APP_TOKEN=test-token -e SLACK_BOT_TOKEN=test-token -e SLACK_TEAM_ID=T123456789 -e SLACK_CHANNEL_IDS=C123456789 -p 8080:8080 kagent-slack-bot
+🔍 Validating Slack Bot Configuration...
+==================================================
+📋 Configuration Status:
+-------------------------
+✅ SLACK_APP_TOKEN: test-token...
+✅ SLACK_BOT_TOKEN: test-token...
+✅ SLACK_TEAM_ID: T123456789
+✅ SLACK_CHANNEL_IDS: 1 channel(s)
+✅ BOT_KEYWORDS: @bot, @kagent, hey bot, hey kagent
+✅ KAGENT_A2A_URL: http://kagent.kagent.svc.cluster.local:8083/api/a2a
+
+🔴 CONFIGURATION ERRORS:
+  ❌ SLACK_APP_TOKEN must start with 'xapp-' (got: test-token...)
+  ❌ SLACK_BOT_TOKEN must start with 'xoxb-' (got: test-token...)
+
+💡 Please set the required environment variables:
+  export SLACK_APP_TOKEN=xapp-your-app-token
+  export SLACK_BOT_TOKEN=xoxb-your-bot-token
+  export SLACK_TEAM_ID=T1234567890
+  export SLACK_CHANNEL_IDS=C1234567890,C0987654321
+{"event": "Configuration validation failed - bot cannot start", "logger": "__main__", "level": "error", "timestamp": "2025-06-27T17:49:51.057294Z"}
+```
